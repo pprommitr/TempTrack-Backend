@@ -13,31 +13,27 @@ MQTT Broker (Mosquitto)
 🛠️ 2. Installation (การติดตั้ง)
 สร้างโฟลเดอร์โปรเจกต์และเข้าไปข้างใน
 
-Bash
+## mkdir backend-blockchain
+## cd backend-blockchain
 
-mkdir backend-blockchain
-cd backend-blockchain
 ติดตั้ง Dependencies ที่จำเป็น
+## npm init -y
+## npm install express mqtt cors fabric-network fabric-ca-client
 
-Bash
-
-npm init -y
-npm install express mqtt cors fabric-network fabric-ca-client
 💻 3. Server Code (server.js)
 สร้างไฟล์ server.js และใส่โค้ด 
 🚀 4. How to Run (การสั่งรัน)
 รันคำสั่งนี้เพื่อเริ่มระบบ:
 
-Bash
+## node server.js
 
-node server.js
 Troubleshooting: หากขึ้น Error ว่า Port 3000 ถูกใช้งานอยู่ ให้ใช้คำสั่งเคลียร์ Port: sudo fuser -k 3000/tcp
 
 📡 5. API Documentation
 🔹 Get All History Logs (ดึงประวัติ)
 ดึงข้อมูล Transaction ทั้งหมดที่ถูกบันทึกลงใน Blockchain
 
-URL: /api/history
+URL: [/api/history](http://13.212.111.239:3000/api/history)
 
 Method: GET
 
