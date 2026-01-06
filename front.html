@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Blockchain Temperature Log</title>
+</head>
+<body>
+    <h1>🌡️ ประวัติอุณหภูมิจาก Blockchain</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>เวลา (Time)</th>
+                <th>อุณหภูมิ (°C)</th>
+                <th>Blockchain ID</th>
+            </tr>
+        </thead>
+        <tbody id="logTable">
+            </tbody>
+    </table>
+
+    <script>
+        // ใส่ IP ของเครื่อง Server AWS ของคุณ
+        const API_URL = 'http://13.212.XXX.XXX:3000/api/history';
+
+        async function fetchHistory() {
+            try {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                
+                const tableBody = document.getElementById('logTable');
+                tableBody.innerHTML = ''; // เคลียร์ค่าเก่า
+
+                data.forEach(item => {
+                    // แปลง Asset ID เป็นเวลาที่อ่านรู้เรื่อง
+                    const timestamp = parseInt(item.ID.split('-')[1]);
+                    const date = new Date(timestamp).toLocaleString();
+
+                    const row = `
+                        <tr>
+                            <td>${date}</td>
+                            <td>${item.AppraisedValue}</td>
+                            <td>${item.ID}</td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        // ดึงข้อมูลทันทีเมื่อเปิดเว็บ
+        fetchHistory();
+        // อัปเดตข้อมูลทุกๆ 10 วินาที
+        setInterval(fetchHistory, 10000);
+    </script>
+</body>
+</html>
