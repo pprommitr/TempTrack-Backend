@@ -36,28 +36,10 @@ Troubleshooting: หากขึ้น Error ว่า Port 3000 ถูกใช
 ดึงข้อมูล Transaction ทั้งหมดที่ถูกบันทึกลงใน Blockchain
 
 URL: [/api/history](http://13.212.111.239:3000/api/history)
+http://13.212.111.239:3000/api/history
 
 Method: GET
 
-Response Example:
 
-JSON
-
-[
-  {
-    "ID": "asset-1703561234567",
-    "Color": "Red",
-    "Size": 5,
-    "Owner": "KidBright_Sensor",
-    "AppraisedValue": "28.5"
-  },
-  {
-    "ID": "asset-1703561234000",
-    "Color": "Red",
-    "Size": 5,
-    "Owner": "KidBright_Sensor",
-    "AppraisedValue": "27.0"
-  }
-]
 
 
